@@ -1,0 +1,29 @@
+.DetailMaincontainer {
+  background-color: #faf7f5;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.DetailMainHeadercontainer {
+  text-align: center;
+  margin-top: 43px;
+}
+
+.DetailCountryMaincontainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 16.5vh;
+  background-color: #ffffff;
+}
+
+.DetailForcastMaincontainer {
+  width: 100vw;
+  height: 49.5vh;
+  background-color: #ffffff;
+}
+
+/* 49.5 */

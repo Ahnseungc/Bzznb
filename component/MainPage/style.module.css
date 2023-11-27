@@ -1,0 +1,73 @@
+.MainContainer {
+  text-align: center;
+  background-color: #faf7f5;
+  /* justify-content: center; */
+}
+
+.CountryList {
+  display: flex;
+  list-style: none;
+  width: 80vw;
+  height: 40px;
+  justify-content: space-evenly;
+}
+
+.Country {
+  width: 20%;
+  border-radius: 6px;
+  border: 1px solid #ff0045;
+  background-color: white;
+  padding: 14px, 50px, 14px, 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ff0045;
+}
+
+.Country:hover {
+  background-color: #ffd2cc;
+  color: #b70055;
+  border-color: #b70055;
+  transition: 1s ease-in-out;
+}
+
+.Country:active {
+  background-color: #ffaba1;
+  color: #ff0045;
+  border-color: #ff0045;
+  transition: 1s ease-in-out;
+}
+
+.MiddleContainer {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.Introduction {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8b8b8b;
+}
+
+.Earth {
+  margin-top: 106px;
+}
+
+.HomeMainTextW_T {
+  font-weight: 900;
+  font-size: 82px;
+  line-height: 90.2px;
+  color: #3d3d3d;
+}
+
+.HomeMainTextW_A {
+  font-weight: 700;
+  font-size: 82px;
+  line-height: 90.2px;
+  color: #ff0045;
+}
