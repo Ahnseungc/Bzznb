@@ -14,7 +14,11 @@ const Timedic = (dt) => {
   var days = date.getDate();
   var hours = date.getHours();
   var minutes = '0' + date.getMinutes();
-  var formattedTime = hours + ':' + minutes.substr(-2);
+  if (hours < 10) {
+    var formattedTime = '0' + hours + ':' + minutes.substr(-2);
+  } else {
+    var formattedTime = hours + ':' + minutes.substr(-2);
+  }
   var TImeObject = {
     Years: years,
     Months_str: months_str,
@@ -32,13 +36,14 @@ const DetailPage = ({ Data, City }) => {
   };
 
   const { data, error } = useSWR(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${Current_lat_lon.lat}&lon=${Data.coord.lon}&exclude=alerts&appid=a6e0bc5c87d368a340f8466aa72a89cb&units=metric`,
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${Current_lat_lon.lat}&lon=${Data.coord.lon}&exclude=alerts&appid=a6e0bc5c87d368a340f8466aa72a89cb&units=metric`,
     fetcher,
   );
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
+  console.log(data.list[0]);
 
-  const DateAfter = Timedic(data.current.dt);
+  const DateAfter = Timedic(data.list[0].dt);
   const DateAfter2 = DateAfter.Months_str.split(' ');
 
   const WeatherIcon = `https://openweathermap.org/img/wn/${Data.weather[0].icon}@2x.png`;
@@ -48,7 +53,7 @@ const DetailPage = ({ Data, City }) => {
       <header>
         <div className={style.DetailMainHeadercontainer}>
           <Image src={'/img/img2.png'} width={68} height={51} alt="/" />
-          <h1>Weather Information for {City}</h1>
+          <h1>Weather Information for {data.city.name}</h1>
         </div>
       </header>
       <section>
@@ -62,16 +67,16 @@ const DetailPage = ({ Data, City }) => {
                     {DateAfter2[1]} {DateAfter2[2]}, {DateAfter.FormattedTime}
                   </p>
                   <div>
-                    {City},{Data.sys.country}
+                    {data.city.name},{data.city.country}
                     <span>(인구수:81000)</span>
                   </div>
                 </div>
               </div>
               <div className={style.DetailCountryRightDatecontainer}>
-                <span>{Data.main.temp}℃</span>
+                <span>{data.list[0].main.temp}℃</span>
                 <div>
-                  Feels like {Data.main.feels_like}℃ {Data.weather[0].main} 풍속m/s{' '}
-                  {Data.wind.speed} 습도 {Data.main.humidity}%
+                  Feels like {data.list[0].main.feels_like}℃ {data.list[0].weather[0].main} 풍속m/s{' '}
+                  {Data.wind.speed} 습도 {data.list[0].main.humidity}%
                 </div>
               </div>
             </div>
@@ -79,7 +84,7 @@ const DetailPage = ({ Data, City }) => {
           <article>
             <div className={style.DetailForcastMaincontainer}>
               <h2>5-day Forecast</h2>
-              <TreeMenu data={DateAfter} daily={data.daily} />
+              <TreeMenu data={DateAfter} datamain={data.list} />
             </div>
           </article>
         </div>

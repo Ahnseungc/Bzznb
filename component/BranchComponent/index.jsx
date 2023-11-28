@@ -10,7 +10,7 @@ const BrachComponent = ({ branch, icon, sky, temp }) => {
 
   return (
     <div>
-      <div onClick={() => toggleOpen(!open)} key={branch.id} className={styles.BranchComponent}>
+      <div onClick={() => toggleOpen(!open)} className={styles.BranchComponent}>
         {!hasChildren ? (
           <div className={styles.BranchComponentOpen}>
             <div className={styles.BranchChildOpenLeftContainer}>

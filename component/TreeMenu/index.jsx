@@ -1,7 +1,7 @@
 import TreeComponent from '../TreeComponent';
 
-const TreeMenu = ({ data, daily }) => {
-  let Mon_List = [
+const TreeMenu = ({ data, datamain }) => {
+  const Mon_List = [
     'Jan',
     'Feb',
     'Mar',
@@ -15,77 +15,46 @@ const TreeMenu = ({ data, daily }) => {
     'Nov',
     'Dec',
   ];
+  const Label_List = [
+    `03:00am`,
+    `06:00am`,
+    `09:00am`,
+    `12:00am`,
+    `15:00am`,
+    `18:00am`,
+    `21:00am`,
+    `00:00am`,
+  ];
 
   let lastday = new Date(data.Years, data.Months, 0).toString().split(' ')[2];
   let treedata = [];
-  console.log(daily);
-
-  for (var i = 1; i < 6; i++) {
+  let j = 0;
+  console.log(datamain);
+  for (var i = 0; i < 5; i++) {
     let temp = {
-      id: i,
+      id: 0,
       label: Mon_List[data.Months - 1],
       date: data.Days,
-      children: [
-        {
-          id: i + 1,
-          icon: daily[i].weather[0].icon,
-          label: `03:00am`,
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-
-        {
-          id: i + 2,
-          icon: daily[i].weather[0].icon,
-          label: '06:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-        {
-          id: i + 3,
-          icon: daily[i].weather[0].icon,
-          label: '09:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-        {
-          id: i + 4,
-          icon: daily[i].weather[0].icon,
-          label: '12:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-        {
-          id: i + 5,
-          icon: daily[i].weather[0].icon,
-          label: '15:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-        {
-          id: i + 6,
-          icon: daily[i].weather[0].icon,
-          label: '18:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-        {
-          id: i + 7,
-          icon: daily[i].weather[0].icon,
-          label: '21:00am',
-          temp: `${daily[i].temp.max}℃ / ${daily[i].temp.min}℃`,
-          sky: daily[i].weather[0].description,
-        },
-      ],
+      children: [],
     };
+    temp.id = i;
     temp.date += i;
     if (temp.date > Number(lastday)) {
       temp.date = temp.date - Number(lastday);
       temp.label = Mon_List[data.Months];
     }
+    Label_List.map((e, index) => {
+      temp.children.push({
+        id: j,
+        icon: datamain[j].weather[0].icon,
+        label: e,
+        temp: `${datamain[j].main.temp_max}℃ / ${datamain[j].main.temp_min}℃`,
+        sky: datamain[j].weather[0].main,
+      });
+      j += 1;
+    });
     treedata.push(temp);
   }
-  console.log(treedata);
 
   return <TreeComponent data={treedata} />;
 };
