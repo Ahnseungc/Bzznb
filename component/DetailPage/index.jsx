@@ -8,14 +8,18 @@ import style from './style.module.css';
 const Timedic = (dt) => {
   let unix_timestamp = dt;
   const date = new Date(unix_timestamp * 1000);
-
-  var days = date.toDateString().split(' ').slice(1, 3);
-  console.log(date.toDateString().split(' ').slice(1, 3));
+  var years = date.getFullYear();
+  var months = date.getMonth() + 1;
+  var months_str = date.toDateString();
+  var days = date.getDate();
   var hours = date.getHours();
   var minutes = '0' + date.getMinutes();
   var formattedTime = hours + ':' + minutes.substr(-2);
   var TImeObject = {
+    Years: years,
+    Months_str: months_str,
     Days: days,
+    Months: months,
     FormattedTime: formattedTime,
   };
   return TImeObject;
@@ -31,13 +35,11 @@ const DetailPage = ({ Data, City }) => {
     `https://api.openweathermap.org/data/2.5/onecall?lat=${Current_lat_lon.lat}&lon=${Data.coord.lon}&exclude=alerts&appid=a6e0bc5c87d368a340f8466aa72a89cb&units=metric`,
     fetcher,
   );
-
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
 
   const DateAfter = Timedic(data.current.dt);
-
-  console.log(data);
+  const DateAfter2 = DateAfter.Months_str.split(' ');
 
   const WeatherIcon = `https://openweathermap.org/img/wn/${Data.weather[0].icon}@2x.png`;
 
@@ -57,7 +59,7 @@ const DetailPage = ({ Data, City }) => {
                 <img src={WeatherIcon} alt="/"></img>
                 <div className={style.DetailCountryLeftDatecontainer}>
                   <p>
-                    {DateAfter.Days[0]} {DateAfter.Days[1]}, {DateAfter.FormattedTime}
+                    {DateAfter2[1]} {DateAfter2[2]}, {DateAfter.FormattedTime}
                   </p>
                   <div>
                     {City},{Data.sys.country}
@@ -77,7 +79,7 @@ const DetailPage = ({ Data, City }) => {
           <article>
             <div className={style.DetailForcastMaincontainer}>
               <h2>5-day Forecast</h2>
-              <TreeMenu data={DateAfter} />
+              <TreeMenu data={DateAfter} daily={data.daily} />
             </div>
           </article>
         </div>
