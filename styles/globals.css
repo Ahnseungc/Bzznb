@@ -7,7 +7,7 @@ body {
 
 @font-face {
   font-family: 'Pretendara';
-  src: url('/bzznb//public/fonts/Pretendard-Black.ttf');
+  src: url('/bzznb/public/fonts/Pretendard-Black.ttf') format('ttf');
 }
 @media only screen and (min-width: 800px) and (max-width: 1279px) {
   body {
