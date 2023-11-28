@@ -9,8 +9,21 @@ body {
   font-family: 'Pretendara';
   src: url('/bzznb/public/fonts/Pretendard-Black.ttf') format('ttf');
 }
-@media only screen and (min-width: 800px) and (max-width: 1279px) {
+@media screen and (min-width: 800px) {
+  @media screen and (min-width: 1280px) {
+    body {
+      width: 1280px;
+      margin: 0 auto;
+    }
+  }
+
   body {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  body {
+    overflow-x: scroll; /* 스크롤로 볼 수 있도록 */
   }
 }

@@ -7,7 +7,7 @@
   border-top: 1px solid #dfdfdf;
 }
 
-.BranchComponentImage {
+.Arrow {
   margin-right: 3vw;
 }
 
@@ -56,4 +56,21 @@
   line-height: 28px;
   letter-spacing: -0.6px;
   color: #8b8b8b;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1279px) {
+}
+
+@media screen and (max-width: 800px) {
+  .MainContainer {
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  .BranchComponent {
+    width: 800px;
+  }
+
+  .CountryList {
+    width: 722.72px;
+  }
 }

@@ -14,7 +14,7 @@ const Detail = () => {
   if (!data) return <div>loading...</div>;
   return (
     <>
-      <DetailPage Data={data} City={City} />
+      <DetailPage Data={data} />
     </>
   );
 };

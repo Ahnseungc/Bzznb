@@ -23,22 +23,25 @@ const BrachComponent = ({ branch, icon, sky, temp }) => {
             </div>
           </div>
         ) : (
-          <p>
+          <p className={styles.BranchLabel}>
             {branch.label} {branch.date}
           </p>
         )}
 
         {hasChildren &&
           (open ? (
-            <Image src="/img/UpArrow.png" width={24} height={24} alt="/" />
+            <div className={styles.Arrow}>
+              <Image src="/img/UpArrow.png" width={24} height={24} alt="/" />
+            </div>
           ) : (
-            <Image src="/img/DownArrow.png" width={24} height={24} alt="/" />
+            <div className={styles.Arrow}>
+              <Image src="/img/DownArrow.png" width={24} height={24} alt="/" c />
+            </div>
           ))}
       </div>
       {open &&
         hasChildren &&
         branch.children?.map((e) => {
-          console.log(e);
           return <BrachComponent key={e.id} branch={e} icon={e.icon} sky={e.sky} temp={e.temp} />;
         })}
     </div>

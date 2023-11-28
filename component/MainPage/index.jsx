@@ -30,7 +30,15 @@ const MainPage = () => {
           </ul>
         </section>
       </div>
-      <Image className={styles.Earth} src={'/img/img.png'} alt="/" width={430} height={321} />
+
+      <Image
+        className={styles.Earth}
+        src={'/img/img.png'}
+        alt="/"
+        width={430}
+        height={321}
+        priority
+      />
     </div>
   );
 };

@@ -1,4 +1,6 @@
 .MainContainer {
+  height: 100vh;
+  width: 100vw;
   text-align: center;
   background-color: #faf7f5;
   /* justify-content: center; */
@@ -55,7 +57,7 @@
 }
 
 .Earth {
-  margin-top: 106px;
+  margin-top: 10vh;
 }
 
 .HomeMainTextW_T {
@@ -70,4 +72,21 @@
   font-size: 82px;
   line-height: 90.2px;
   color: #ff0045;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1279px) {
+  .MainContainer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .MainContainer {
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+  .CountryList {
+    width: 722.72px;
+  }
 }

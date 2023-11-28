@@ -1,35 +1,12 @@
 import Image from 'next/image';
 import useSWR from 'swr';
 import fetcher from '../../util/fetcher';
-import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import TreeMenu from '../TreeMenu';
 import style from './style.module.css';
+import useTime from '../../util/useTime';
 
-const Timedic = (dt) => {
-  let unix_timestamp = dt;
-  const date = new Date(unix_timestamp * 1000);
-  var years = date.getFullYear();
-  var months = date.getMonth() + 1;
-  var months_str = date.toDateString();
-  var days = date.getDate();
-  var hours = date.getHours();
-  var minutes = '0' + date.getMinutes();
-  if (hours < 10) {
-    var formattedTime = '0' + hours + ':' + minutes.substr(-2);
-  } else {
-    var formattedTime = hours + ':' + minutes.substr(-2);
-  }
-  var TImeObject = {
-    Years: years,
-    Months_str: months_str,
-    Days: days,
-    Months: months,
-    FormattedTime: formattedTime,
-  };
-  return TImeObject;
-};
-
-const DetailPage = ({ Data, City }) => {
+const DetailPage = ({ Data }) => {
   const Current_lat_lon = {
     lat: Data.coord.lat,
     lon: Data.coord.lon,
@@ -38,12 +15,12 @@ const DetailPage = ({ Data, City }) => {
   const { data, error } = useSWR(
     `https://api.openweathermap.org/data/2.5/forecast?lat=${Current_lat_lon.lat}&lon=${Data.coord.lon}&exclude=alerts&appid=a6e0bc5c87d368a340f8466aa72a89cb&units=metric`,
     fetcher,
+    { dedupingInterval: 1000 }, // 1초
   );
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-  console.log(data.list[0]);
 
-  const DateAfter = Timedic(data.list[0].dt);
+  const DateAfter = useTime(data.list[0].dt);
   const DateAfter2 = DateAfter.Months_str.split(' ');
 
   const WeatherIcon = `https://openweathermap.org/img/wn/${Data.weather[0].icon}@2x.png`;

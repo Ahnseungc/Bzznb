@@ -4,8 +4,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /* width: 100vw; */
-  /* height: 100vh; */
+
   padding: 2vw;
 }
 
@@ -96,4 +95,24 @@
   font-weight: 700;
   font-size: 36px;
   line-height: 24px;
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1279px) {
+  .DetailMaincontainer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .DetailMainHeadercontainer {
+    width: 810px;
+  }
+  .DetailMaincontainer {
+    /* position: fixed; */
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  .DetailForcastMaincontainer {
+    width: 810px;
+  }
 }
