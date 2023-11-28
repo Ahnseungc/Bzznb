@@ -1,6 +1,6 @@
 .DetailMaincontainer {
   background-color: #faf7f5;
-
+  align-items: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,17 +13,84 @@
 }
 
 .DetailCountryMaincontainer {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   width: 100vw;
   height: 16.5vh;
   background-color: #ffffff;
 }
-
-.DetailForcastMaincontainer {
-  width: 100vw;
-  height: 49.5vh;
-  background-color: #ffffff;
+.DetailCountryLeftcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.DetailCountryLeftcontainer img {
+  border-radius: 60px;
+  margin: 2vw;
 }
 
-/* 49.5 */
+.DetailCountryLeftDatecontainer {
+  padding-bottom: 10px;
+}
+
+.DetailCountryLeftDatecontainer p {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26.4px;
+  color: #555555;
+}
+
+.DetailCountryLeftDatecontainer div {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 39.6px;
+  color: #3d3d3d;
+}
+.DetailCountryLeftDatecontainer span {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 15.4px;
+  color: #8b8b8b;
+}
+
+.DetailForcastMaincontainer {
+  border: 6px;
+  /* width: 100vw; */
+
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  align-items: center;
+
+  margin-top: 3vh;
+}
+
+.DetailCountryRightDatecontainer {
+  padding: 5px;
+  text-align: end;
+  margin-right: 3vw;
+}
+
+.DetailCountryRightDatecontainer span {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 55px;
+  letter-spacing: -0.6px;
+  color: #3d3d3d;
+}
+
+.DetailCountryRightDatecontainer div {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: -0.6px;
+  color: #8b8b8b;
+}
+
+.DetailForcastMaincontainer h2 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 24px;
+}
