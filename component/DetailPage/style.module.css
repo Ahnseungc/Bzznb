@@ -108,7 +108,7 @@
     width: 810px;
   }
   .DetailMaincontainer {
-    /* position: fixed; */
+    
     overflow-x: scroll;
     overflow-y: scroll;
   }

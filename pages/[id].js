@@ -1,7 +1,10 @@
-import DetailPage from '../component/DetailPage';
+// import DetailPage from '../component/DetailPage';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetcher from '../util/fetcher';
+import dynamic from 'next/dynamic';
+
+const DetailPage = dynamic(import('../component/DetailPage'));
 
 const Detail = () => {
   const router = useRouter();

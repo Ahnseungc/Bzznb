@@ -29,7 +29,7 @@ const TreeMenu = ({ data, datamain }) => {
   let lastday = new Date(data.Years, data.Months, 0).toString().split(' ')[2];
   let treedata = [];
   let j = 0;
-  console.log(datamain);
+  
   for (var i = 0; i < 5; i++) {
     let temp = {
       id: 0,
